@@ -1,0 +1,29 @@
+{
+  "name": "test-riot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "live-server": "^1.2.0",
+    "npm-run-all": "^4.1.1",
+    "pug-cli": "^1.0.0-alpha6",
+    "tag-pug-loader": "^1.0.0",
+    "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "build:js": "webpack",
+    "build:pug": "pug src/pug/index.pug -o dist/ -P",
+    "build": "npm-run-all build:*",
+    "watch:js": "npm run build:js -- -w",
+    "watch:pug": "npm run build:pug -- -w",
+    "watch:browser": "live-server dist --browser=chrome --watch=/",
+    "watch": "npm-run-all -p watch:*"
+  },
+  "dependencies": {
+    "obseriot": "^0.3.9",
+    "riot": "^3.7.3"
+  }
+}
