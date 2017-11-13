@@ -10,42 +10,42 @@ app
 					#layer
 						.row
 							.col-xs-6
-								.alert.alert-warning(type="button", tabindex="0", onclick="{ toggle(0) }")
+								button.btn-block.alert.alert-warning(value="0" tabindex="0", onclick="{ toggle }")
 									p.text-left 左上({ min[0] })
 									p.text-left: strong { prayed[0] }
 							.col-xs-6
-								.alert.alert-danger(type="button", tabindex="0", onclick="{ toggle(1) }")
+								button.btn-block.alert.alert-danger(value="1" tabindex="0", onclick="{ toggle }")
 									p.text-left 右上({ min[1] })
 									p.text-left: strong { prayed[1] }
 						.row
 							.col-xs-6.col-xs-offset-3
-								.alert.alert-default(type="button", tabindex="0", onclick="{ toggle(2) }")
+								button.btn-block.alert.alert-default(value="2" tabindex="0", onclick="{ toggle }")
 									p.text-left ゲート({ min[2] })
 									p.text-left: strong { prayed[2] }
 						.row
 							.col-xs-6
-								.alert.alert-info(type="button", tabindex="0", onclick="{ toggle(3) }")
+								button.btn-block.alert.alert-info(value="3", tabindex="0", onclick="{ toggle }")
 									p.text-left 左下({ min[3] })
 									p.text-left: strong { prayed[3] }
 							.col-xs-6
-								.alert.alert-success(type="button", tabindex="0", onclick="{ toggle(4) }")
+								button.btn-block.alert.alert-success(value="4",tabindex="0", onclick="{ toggle }")
 									p.text-left 右下({ min[4] })
 									p.text-left: strong { prayed[4] }
 				div(show="{ show[0] }")
 					p warning
-					//gldpanel(pcolor="panel-warning")
+					prpanel(ptitle="左上", pcolor="panel-warning")
 				div(show="{ show[1] }")
 					p danger
-					//gldpanel(pcolor="panel-danger")
+					prpanel(ptitle="右上", pcolor="panel-danger")
 				div(show="{ show[2] }")
 					p gate
-					//gatepanel(pcolor="panel-default")
+					//gtpanel(ptitle="", pcolor="panel-default")
 				div(show="{ show[3] }")
 					p info
-					//gldpanel(pcolor="panel-info")
+					prpanel(ptitle="左下", pcolor="panel-info")
 				div(show="{ show[4] }")
 					p success
-					//gldpanel(pcolor="panel-success")
+					prpanel(ptitle="右下", pcolor="panel-success")
 			.col-md-8
 				p desc
 				//gatedesc
@@ -61,9 +61,11 @@ app
 			console.log('app.tag mounted', opts)
 		})
 
-		toggle(num) {
+		toggle(e) {
 			this.show = [false, false, false, false, false]
+			let num = Number(e.currentTarget.value)
 			this.show[num] = true
+			this.prayed[num] = "123,456%"
 		}
 
 
